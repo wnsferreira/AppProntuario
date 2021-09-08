@@ -1,13 +1,21 @@
 package br.edu.infnet.appProntuario.model.domain;
 
+import javax.persistence.Entity;
+
 import br.edu.infnet.appProntuario.model.exceptions.HonoraiosNaoPreenchidosException;
 
+
+@Entity
 public class Atendimento extends Pedido {
 	
 	private String especializacao;
 	private String nomeProfissional;
 	private float honorario;
 	private float tempoAtendimento;
+	
+	public Atendimento() {
+		
+	}
 	
 	public Atendimento(String descricao, float valor, boolean planoDeSaude) {
 		super(descricao, valor, planoDeSaude);

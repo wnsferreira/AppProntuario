@@ -11,7 +11,7 @@ public class PedidoTeste {
 	public static void main(String[] args) throws ParseException {
 				
 		Exame exm = new Exame("Exame de Sangue", 40, true);
-		exm.setHora(9);
+		//exm.setHora(9);
 		exm.setResultado("dentro dos parâmetros");
 		exm.setTipo("A+");		
 		System.out.println("Exame: " + exm);

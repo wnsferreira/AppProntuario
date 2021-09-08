@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Date;
 
 import br.edu.infnet.appProntuario.model.domain.Atendimento;
 import br.edu.infnet.appProntuario.model.domain.Consulta;
@@ -19,7 +18,7 @@ public class AppTeste {
 
 	public static void main(String[] args) throws NumberFormatException, ParseException {
 		try {
-			String dir = "d:/at/";
+			String dir = "d:/arquivo_prontuario/";
 			String arq = "prontuario.txt";
 			try {
 				FileWriter fileW = new FileWriter(dir+"out_"+arq);
@@ -50,14 +49,10 @@ public class AppTeste {
 						
 						case "C":					
 							Consulta cons = new Consulta(campos[1],Float.valueOf(campos[2]),"S".equalsIgnoreCase(campos[3]), campos[5]);
+						
 							cons.setConvenio(campos[4]);
-							
-	
-//							escrita.write(cons.solicitarPedido());
-						
 							escrita.write(cons.obterConsulta());
-						
-						
+												
 							break;
 							
 						case "A":

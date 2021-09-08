@@ -6,7 +6,6 @@ public class Exame extends Pedido {
 
 	private String tipoExame;
 	private LocalDateTime data;
-	private int horario;
 	private String resultado;
 	
 
@@ -36,8 +35,8 @@ public class Exame extends Pedido {
 		sb.append(";");
 		sb.append(this.data);
 		sb.append(";");
-		sb.append(this.horario);
-		sb.append(";");
+//		sb.append(this.horario);
+//		sb.append(";");
 		sb.append(this.resultado);
 		sb.append(";");
 		sb.append(calcularValorServico());
@@ -57,12 +56,12 @@ public class Exame extends Pedido {
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
-	public int getHora() {
-		return horario;
-	}
-	public void setHora(int hora) {
-		this.horario = hora;
-	}
+//	public int getHora() {
+//		return horario;
+//	}
+//	public void setHora(int hora) {
+//		this.horario = hora;
+//	}
 	public String getResultado() {
 		return resultado;
 	}
