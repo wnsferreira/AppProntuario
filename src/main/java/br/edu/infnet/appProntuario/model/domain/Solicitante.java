@@ -6,58 +6,44 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "TPaciente")
-public class Paciente {
-	
+public class Solicitante {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto incremento
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
 	private String nome;
-	private String sobrenome;
 	private String email;
-	private String senha;
+	private int idade;
 	
 	@ManyToOne
 	@JoinColumn(name = "idUsuario")
 	private Usuario usuario;
 	
-	
-	public Paciente() {
+	public Solicitante() {
 		
 	}
 	
-	public Paciente(String nome, String sobrenome, String email) {
+	public Solicitante(String nome, String email, int idade) {
 		this.nome = nome;
-		this.sobrenome = sobrenome;
 		this.email = email;
-	
+		this.idade = idade;
 	}
 	
 	@Override
 	public String toString() {
+		
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.nome);
 		sb.append(";");
-		sb.append(this.sobrenome);
-		sb.append(";");
 		sb.append(this.email);
+		sb.append(";");
+		sb.append(this.idade);
 		
 		return sb.toString();
 	}
 	
-	
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -65,32 +51,39 @@ public class Paciente {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getSenha() {
-		return senha;
-	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getSobrenome() {
-		return sobrenome;
-	}
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 	
 	
 }

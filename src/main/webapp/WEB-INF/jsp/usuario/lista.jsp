@@ -1,5 +1,4 @@
-<%@page import="br.edu.infnet.appProntuario.model.domain.Paciente"%>
-<%@page import="java.util.List"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -35,7 +34,7 @@
 		     	 <th>Id</th>
 		        <th>Nome</th>
 		        <th>Email</th>
-		        <th>Pacientes</th>
+		        <th>Solicitantes</th>
 		        <th></th>
 		      </tr>
 		    </thead>
@@ -45,7 +44,7 @@
 						<td>${u.id}</td>
 						<td>${u.nome}</td>
 				        <td>${u.email}</td>
-				        <td>${p.pacientes.size()}</td>
+				        <td>${p.solicitantes.size()}</td>
 				        <td><a href="/usuario/${u.id}/excluir"> Excluir</a></td>
 					</tr>		    	
 		    	</c:forEach>		     

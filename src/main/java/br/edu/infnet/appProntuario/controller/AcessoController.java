@@ -19,7 +19,7 @@ import br.edu.infnet.appProntuario.model.service.UsuarioService;
 public class AcessoController {
 	
 	@Autowired		
-	private UsuarioService usuarioService;   	// Criação de um objeto da camada de serviço
+	private UsuarioService usuarioService;   
 	
 	@GetMapping(value="/")
 	public String telaHome(){
@@ -30,9 +30,7 @@ public class AcessoController {
 	public String telaLogin(){
 		return "login";
 	}
-		// não precisa colocar pra retornar /WEB-INF/jsp/login.jsp 
-		//porque já foi configurado o prefixo e sufixo dentro de application.properties
-		// Basta colocar o nome da tela.
+		
 	
 	@GetMapping(value="/logout")
 	public String logout(HttpSession session, SessionStatus status){

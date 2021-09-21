@@ -6,7 +6,10 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appProntuario.model.domain.Atendimento;
+import br.edu.infnet.appProntuario.model.domain.Consulta;
+import br.edu.infnet.appProntuario.model.repository.ConsultaRepository;
 import br.edu.infnet.appProntuario.model.service.AtendimentoService;
+
 
 @Component
 public class PedidoLoader implements ApplicationRunner{
@@ -16,8 +19,8 @@ public class PedidoLoader implements ApplicationRunner{
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-
-
+		
+			
 		Atendimento a1 = new Atendimento("médico", 150, true);
 		a1.setEspecializacao("clinico geral");
 		a1.setHonorario(150);
@@ -25,7 +28,7 @@ public class PedidoLoader implements ApplicationRunner{
 		a1.setTempoAtendimento(1);
 			
 		atendimentoService.incluir(a1);
-		
+				
 		
 		Atendimento a2 = new Atendimento("psicologo", 100, true);
 		a2.setEspecializacao("criança");

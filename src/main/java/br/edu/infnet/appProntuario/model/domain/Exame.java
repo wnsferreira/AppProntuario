@@ -2,13 +2,19 @@ package br.edu.infnet.appProntuario.model.domain;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Exame extends Pedido {
 
 	private String tipoExame;
 	private LocalDateTime data;
 	private String resultado;
+	private String particular;
 	
-
+	public Exame() {
+	}
+	
 	public Exame(String descricao, float valor, boolean planoDeSaude) {
 		super(descricao, valor, planoDeSaude);
 		
@@ -69,6 +75,22 @@ public class Exame extends Pedido {
 		this.resultado = resultado;
 	}
 
+	public String getTipoExame() {
+		return tipoExame;
+	}
+
+	public void setTipoExame(String tipoExame) {
+		this.tipoExame = tipoExame;
+	}
+
+	public String getParticular() {
+		return particular;
+	}
+
+	public void setParticular(String particular) {
+		this.particular = particular;
+	}
+	
 	
 	
 }

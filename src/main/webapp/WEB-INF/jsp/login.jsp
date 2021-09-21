@@ -26,9 +26,7 @@
 	    	<label for="pwd">Senha:</label>
 	    	<input type="password" class="form-control" placeholder="Entre com a sua senha" name="senha">
 	  	</div>
-	  	<div class="checkbox">
-	    	<label><input type="checkbox"> Remember me</label>
-	  	</div>
+	 
 	  	<button type="submit" class="btn btn-default">Entrar</button>
 	  	
 	</form>

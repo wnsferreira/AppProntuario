@@ -9,20 +9,17 @@
 </head>
 <body>
 	<h2>Cadastro de usuários</h2>	
-	<form action="/paciente/incluir" method="post">
+	<form action="/solicitante/incluir" method="post">
 		
 		<h3> 
 			Nome: <input type="text" placeholder="Entre com o seu nome" name="nome">
 		</h3>
-		
+		<h3>
+			Idade: <input type="text"  placeholder="Entre com a sua idade" name="idade">
+		</h3>
 		<h3> 
 			Email: <input type="email"  placeholder="Entre com o seu email" name="email">
-		</h3>
-		
-		<h3>
-			Senha: <input type="text"  placeholder="Entre com a sua senha" name="senha">
-		</h3>
-	
+		</h3>	
 		<h3>
 			<button type="submit">Cadastrar</button>
 		</h3>

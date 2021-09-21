@@ -1,13 +1,11 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Confirmação!</title>
+<title>Agendamento de Consulta</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -16,53 +14,59 @@
 	
 	<div class="container">
 		
-		<form action="/atendimento" method="get">
+		<form action="/consulta" method="get">
 			<button type="submit" class="btn btn-link">Incluir</button>
 		</form>
 		
 		<hr>
 				
-		<c:if test="${not empty atendimentos}">
+		<c:if test="${not empty consultas}">
 				<c:if test="${not empty msg}">
 					<div class="alert alert-success">
  						<strong>Sucesso!</strong> ${msg}
 					</div>	
 				</c:if>
 				
-			<h3>Quantidade de atendimentos existentes: ${atendimentos.size()}!</h3>
+			<h3>Quantidade de consultas existentes: ${consultas.size()}!</h3>
 			
 			<hr>
 		        
 		  <table class="table table-striped">
 		    <thead>
 		      <tr>
-		     	 <th>Id</th>
-		        <th>Descrição</th>
-		        <th>Valor</th>
+		     	<th>Id</th>
+		     	<th>descricao</th>
+		        <th>Data</th>
+		        <th>Hora</th>
+		        <th>Convênio</th>
+		         <th>Plano de saúde</th>
 		        <th></th>
 		      </tr>
 		    </thead>
 		    <tbody>
-		    	<c:forEach var="a" items="${atendimentos}">
+		    	<c:forEach var="c" items="${consultas}">
 					<tr>
-						<td>${a.id}</td>
-						<td>${a.descricao}</td>
-				        <td>${a.honorario}</td>
-				        <td><td><a href="/atendimento/${a.id}/excluir"> Excluir</a></td></td>
+						<td>${c.id}</td>
+						<td>${c.descricao}</td>
+						<td>${c.dataMarcada}</td>
+				        <td>${c.horaMarcada}</td>
+				        <td>${c.convenio}</td>
+				        <td>${c.planoDeSaude}</td>
+				        <td><a href="/consulta/${c.id}/excluir"> Excluir</a></td>
 					</tr>		    	
 		    	</c:forEach>		     
 		    </tbody>
 		  </table>
 	  </c:if>
 	  
-	  <c:if test="${empty atendimentos}">
-	  	<h4>Não existem atendimentos cadastrados!</h4>
+	  <c:if test="${empty consultas}">
+	  	<h4>Não existem consultas cadastrados!</h4>
 	  </c:if>
 	  
 	</div>
 		
 		
-	<form action="/atendimento" method="get">
+	<form action="/consulta" method="get">
 		<button type="submit" class="btn btn-default">Voltar</button>
 	</form>
 </body>

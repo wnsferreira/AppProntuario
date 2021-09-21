@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import br.edu.infnet.appProntuario.model.domain.Endereco;
 import br.edu.infnet.appProntuario.model.domain.Usuario;
 import br.edu.infnet.appProntuario.model.service.UsuarioService;
 
@@ -29,7 +30,9 @@ public class UsuarioController {
 	}
 	
 	@PostMapping(value = "/usuario")
-	public String incluir(Usuario usuario) {  //(Usuario usuario) reflexão... traz todas as informações de usuario de dentro da tela de cadastro
+	public String incluir(Usuario usuario, Endereco endereco) {  		
+		
+		usuario.setEndereco(endereco);   
 		
 		usuarioService.incluir(usuario);
 		

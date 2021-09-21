@@ -7,7 +7,7 @@ public class Prontuario {
 	private String descricao;
 	private String receitas;
 	private String relatorio;
-	private Paciente paciente;
+	//private Solicitante solicitante;
 	private LocalDateTime dataRegistro;
 	
 	
@@ -22,28 +22,28 @@ public class Prontuario {
 		this.relatorio = relatorio;
 	}
 	
-	@Override
-	public String toString() {
-		
-		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		
-		return String.format("%s;%s;%s;%s;%s",
-				this.descricao,
-				this.receitas,
-				this.relatorio,
-				this.paciente,
-				this.dataRegistro.format(formato)
-				);
-		
-	}
-	
-	public String obterProntuario() {
-		return String.format("PRONTUARIO \r Paciente %s %s \r Atendido no dia %s.\r\r",
-				this.paciente.getNome(),
-				this.paciente.getSobrenome(),
-				this.dataRegistro.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
-				);
-	}
+//	@Override
+//	public String toString() {
+//		
+//		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+//		
+//		return String.format("%s;%s;%s;%s;%s",
+//				this.descricao,
+//				this.receitas,
+//				this.relatorio,
+//				this.getSolicitante(),
+//				this.dataRegistro.format(formato)
+//				);
+//		
+//	}
+//	
+//	public String obterProntuario() {
+//		return String.format("PRONTUARIO \r Solicitante %s %s \r Atendido no dia %s.\r\r",
+//				this.solicitante.getNome(),
+//				this.solicitante.getSobrenome(),
+//				this.dataRegistro.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
+//				);
+//	}
 	
 	public String getExame() {
 		return descricao;
@@ -69,13 +69,30 @@ public class Prontuario {
 		this.relatorio = relatorio;
 	}
 
-	public Paciente getPaciente() {
-		return paciente;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
+
+//	public Solicitante getSolicitante() {
+//		return solicitante;
+//	}
+//
+//	public void setSolicitante(Solicitante solicitante) {
+//		this.solicitante = solicitante;
+//	}
+
+	public LocalDateTime getDataRegistro() {
+		return dataRegistro;
+	}
+
+	public void setDataRegistro(LocalDateTime dataRegistro) {
+		this.dataRegistro = dataRegistro;
+	}
+
 	
 	
 }

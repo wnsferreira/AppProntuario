@@ -4,16 +4,21 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.persistence.Entity;
 
+@Entity
 public class Consulta extends Pedido {
 
 	private String dataMarcada;
-	private int horaMarcada;  //Exibir uma lista de horarios disponiveis
-	private String convenio;
-	
-	DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	private int horaMarcada; 
+	private boolean convenio;
 		
-	public Consulta(String descricao, float valor, boolean planoDeSaude, String dataMarcada) throws ParseException {
+	//DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		
+	public Consulta() {
+	}
+	
+	public Consulta(String descricao, float valor, boolean planoDeSaude) throws ParseException {
 		
 		super(descricao, valor, planoDeSaude);
 		//this.dataMarcada = dataMarcada.formatted(formatoData);
@@ -64,13 +69,14 @@ public class Consulta extends Pedido {
 		this.horaMarcada = horaMarcada;
 	}
 
-	public String getConvenio() {
+	public boolean isConvenio() {
 		return convenio;
 	}
 
-	public void setConvenio(String convenio) {
+	public void setConvenio(boolean convenio) {
 		this.convenio = convenio;
 	}
+	
 
 	@Override
 	public float calcularValorServico() {
@@ -84,6 +90,7 @@ public class Consulta extends Pedido {
 		return  this.getValor();
 		
 	}
+	
 	
 	
 }
