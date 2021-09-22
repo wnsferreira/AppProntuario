@@ -20,7 +20,7 @@
 		<h3>Java WEB</h3>
 		<h4>AT</h4>
 		
-		<p> <a href="Link do Git">GTIHUB</a> </p>
+		<p> <a href="https://github.com/WNSFerreira/AppProntuario">GTIHUB</a> </p>
 		
 	</div>
 	

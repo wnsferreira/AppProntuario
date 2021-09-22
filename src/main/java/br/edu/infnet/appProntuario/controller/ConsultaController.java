@@ -6,9 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.appProntuario.model.domain.Atendimento;
 import br.edu.infnet.appProntuario.model.domain.Consulta;
+import br.edu.infnet.appProntuario.model.domain.Usuario;
 import br.edu.infnet.appProntuario.model.service.ConsultaService;
 
 @Controller
@@ -18,7 +20,7 @@ public class ConsultaController {
 	private ConsultaService consultaService;
 	
 	@GetMapping(value = "/consulta/lista")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 		
 		model.addAttribute("consultas", consultaService.obterLista());
 		
@@ -31,26 +33,36 @@ public class ConsultaController {
 	}
 	
 	@PostMapping(value = "/consulta/incluir")
-	public String incluir(Model model, Consulta consulta) {
+	public String incluir(Model model, Consulta consulta, @SessionAttribute("user") Usuario usuario) {
+		
+		consulta.setUsuario(usuario);
 		
 		consultaService.incluir(consulta);
 		
 		model.addAttribute("msg","Consulta" + consulta.getDescricao() + " cadastrada com sucesso!!");
 		
-		return telaLista(model);
+		return telaLista(model, usuario);
 	}
 	
 	@GetMapping(value = "/consulta/{id}/excluir")
-	public String excluir(Model model, @PathVariable Integer id) {
+	public String excluir(Model model, @PathVariable Integer id, @SessionAttribute("user") Usuario usuario) {
 		
 		
 		Consulta consulta = consultaService.obterPorId(id);
 		
-		consultaService.excluir(id);
-	
-		model.addAttribute("msg", "Consulta " + consulta.getDescricao() +" removido com sucesso!");
+		String mensagem = null;
+		
+		try {
+			consultaService.excluir(id);	
+			mensagem = "Consulta " + consulta.getDescricao() +" removido com sucesso!";	
+		} catch (Exception e) {
+			mensagem = "Não foi possível excluir a consulta "+ consulta.getDescricao();
+		}
 		
 	
-		return telaLista(model);
+		model.addAttribute("msg", mensagem);
+		
+	
+		return telaLista(model, usuario);
 	}
 }

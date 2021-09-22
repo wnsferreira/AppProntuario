@@ -14,7 +14,7 @@
 	
 	<div class="container">
 		
-		<form action="/solicitante" method="get">
+		<form action="/prontuario" method="get">
 			<button type="submit" class="btn btn-link">Incluir</button>
 		</form>
 		
@@ -27,30 +27,28 @@
 					</div>	
 				</c:if>
 				
-			<h3>Quantidade de solicitantes existentes: ${lista.size()}!</h3>
+			<h3>Quantidade de prontuarios existentes: ${lista.size()}!</h3>
 			
 			<hr>
-		        
+		        	
 		  <table class="table table-striped">
 		    <thead>
 		      <tr>
 		     	 <th>Id</th>
-		        <th>Nome</th>
-		        <th>Email</th>
-		        <th>Idade</th>
-		        <th>Usuário</th>
+		        <th>Descrição</th>
+		        <th>Solicitante</th>
+		        <th>Pedidos</th>
 		        <th></th>
 		      </tr>
 		    </thead>
 		    <tbody>
-		    	<c:forEach var="s" items="${lista}">
+		    	<c:forEach var="p" items="${lista}">
 					<tr>
-						<td>${s.id}</td>
-						<td>${s.nome}</td>
-				        <td>${s.email}</td>
-				        <td>${s.idade}</td>
-				        <td>${s.usuario.nome}</td>
-				        <td><a href="/solicitante/${s.id}/excluir"> Excluir</a></td>
+						<td>${p.id}</td>
+						<td>${p.descricao}</td>
+				        <td>${p.solicitante.nome}</td>
+				        <td>${p.pedidos.size()}</td>
+				        <td><a href="/prontuario/${p.id}/excluir"> Excluir</a></td>
 					</tr>		    	
 		    	</c:forEach>		     
 		    </tbody>
@@ -58,13 +56,13 @@
 	  </c:if>
 	  
 	  <c:if test="${empty lista}">
-	  	<h4>Não existem solicitantes cadastrados!</h4>
+	  	<h4>Não existem prontuários cadastrados!</h4>
 	  </c:if>
 	  
 	</div>
 		
 		
-	<form action="/solicitante" method="get">
+	<form action="/prontuario" method="get">
 		<button type="submit" class="btn btn-default">Voltar</button>
 	</form>
 </body>

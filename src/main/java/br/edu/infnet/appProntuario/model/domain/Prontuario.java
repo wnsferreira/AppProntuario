@@ -1,15 +1,39 @@
 package br.edu.infnet.appProntuario.model.domain;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Prontuario {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String descricao;
 	private String receitas;
 	private String relatorio;
-	//private Solicitante solicitante;
 	private LocalDateTime dataRegistro;
 	
+	@OneToOne(cascade = CascadeType.DETACH)  
+	@JoinColumn(name = "idSolicitante")
+	private Solicitante solicitante;
+	
+	@ManyToMany(cascade = CascadeType.DETACH)
+	private List<Pedido> pedidos;
+	
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
 	
 	public Prontuario() {
 		dataRegistro = LocalDateTime.now();
@@ -45,8 +69,34 @@ public class Prontuario {
 //				);
 //	}
 	
+	
+	
 	public String getExame() {
 		return descricao;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Solicitante getSolicitante() {
+		return solicitante;
+	}
+
+	public void setSolicitante(Solicitante solicitante) {
+		this.solicitante = solicitante;
 	}
 
 	public void setExame(String exame) {
@@ -77,14 +127,6 @@ public class Prontuario {
 		this.descricao = descricao;
 	}
 
-//	public Solicitante getSolicitante() {
-//		return solicitante;
-//	}
-//
-//	public void setSolicitante(Solicitante solicitante) {
-//		this.solicitante = solicitante;
-//	}
-
 	public LocalDateTime getDataRegistro() {
 		return dataRegistro;
 	}
@@ -93,6 +135,14 @@ public class Prontuario {
 		this.dataRegistro = dataRegistro;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 	
 	
 }

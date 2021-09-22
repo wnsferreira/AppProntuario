@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.infnet.appProntuario.model.domain.Prontuario;
 import br.edu.infnet.appProntuario.model.domain.Solicitante;
 import br.edu.infnet.appProntuario.model.domain.Usuario;
 import br.edu.infnet.appProntuario.model.repository.SolicitanteRepository;
@@ -34,5 +35,9 @@ public class SolicitanteService {
 	public void excluir(Integer id) {
 		
 		solicitanteRepository.deleteById(id);
+	}
+	
+	public Solicitante obterPorId(Integer id) {
+		return solicitanteRepository.findById(id).orElse(null);
 	}
 }

@@ -21,6 +21,11 @@ public class AcessoController {
 	@Autowired		
 	private UsuarioService usuarioService;   
 	
+	@GetMapping(value = "/app")
+	public String telaApp() {
+		return "app";
+	}
+	
 	@GetMapping(value="/")
 	public String telaHome(){
 		return "index";

@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import br.edu.infnet.appProntuario.model.domain.Prontuario;
 import br.edu.infnet.appProntuario.model.domain.Solicitante;
 import br.edu.infnet.appProntuario.model.domain.Usuario;
 import br.edu.infnet.appProntuario.model.service.SolicitanteService;
 
 
 @Controller		
-public class SolicitanteControle {
+public class SolicitanteController {
 	
 	@Autowired
 	private SolicitanteService solicitanteService;
@@ -35,7 +36,7 @@ public class SolicitanteControle {
 	@PostMapping(value = "/solicitante/incluir")
 	public String incluir(Model model, Solicitante solicitante, @SessionAttribute("user") Usuario usuario) {
 		
-		solicitante.setUsuario(usuario);  // informa que o usuario está relacionado ao paciente
+		solicitante.setUsuario(usuario);
 		
 		solicitanteService.incluir(solicitante);
 		
@@ -47,11 +48,26 @@ public class SolicitanteControle {
 	}
 	
 	@GetMapping(value ="/solicitante/{id}/excluir" )
-	public String excluir(Model model, @PathVariable Integer id) {
+	public String excluir(Model model, @PathVariable Integer id, @SessionAttribute("user") Usuario usuario) {
 		
-		solicitanteService.excluir(id);
+		Solicitante solicitante = solicitanteService.obterPorId(id);
 		
-		return "redirect:/solicitante/lista";
+		String mensagem = null;
+		
+		try {
+			solicitanteService.excluir(id);		
+			mensagem = "O solicitante "+ solicitante.getNome() +" foi removido com sucesso!";
+			
+		} catch (Exception e) {
+			mensagem = "Não foi possível excluir o solicitante "+ solicitante.getNome();
+		}
+		
+		
+		model.addAttribute("msg", mensagem);
+		
+		return telaLista(model, usuario);
 	}
+	
+
 }
 	

@@ -15,21 +15,28 @@ import javax.persistence.OneToOne;
 public class Usuario {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)  // INDICA QUE A TABELA PRODUTO TEM UMA HERANÇA COM AS FILHAS
+	@GeneratedValue(strategy = GenerationType.IDENTITY)  // INDICA QUE A TABELA PEDIDO TEM UMA HERANÇA COM AS FILHAS
 	private Integer id;
 	private String nome;
 	private String email;
 	private String senha;
 	private boolean admin;
 	
-	@OneToOne(cascade = CascadeType.PERSIST)  // o persist indica que Usuario é responsável pela persistencia da informação de endereço
+	@OneToOne(cascade = CascadeType.PERSIST)  
 	@JoinColumn(name = "idEndereco")
 	private Endereco endereco;	
 	
 	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idUsuario")
-	//private List<Paciente> pacientes;
 	private List<Solicitante> solicitantes;
+	
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JoinColumn(name = "idUsuario")
+	private List<Pedido> pedidos;
+
+	@OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JoinColumn(name = "idUsuario")
+	private List<Prontuario> prontuarios;
 	
 	public Endereco getEndereco() {
 		return endereco;
@@ -73,6 +80,18 @@ public class Usuario {
 	}
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+	public List<Prontuario> getProntuarios() {
+		return prontuarios;
+	}
+	public void setProntuarios(List<Prontuario> prontuarios) {
+		this.prontuarios = prontuarios;
 	}
 	
 	

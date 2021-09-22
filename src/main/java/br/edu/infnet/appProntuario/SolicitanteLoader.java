@@ -3,30 +3,32 @@ package br.edu.infnet.appProntuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import br.edu.infnet.appProntuario.model.domain.Solicitante;
 import br.edu.infnet.appProntuario.model.domain.Usuario;
+import br.edu.infnet.appProntuario.model.service.SolicitanteService;
 import br.edu.infnet.appProntuario.model.service.UsuarioService;
 
 
 @Component
-public class DataLoader implements ApplicationRunner {
+@Order(2)
+public class SolicitanteLoader implements ApplicationRunner {
 
 	@Autowired
-	private UsuarioService usuarioService;
+	private SolicitanteService solicitanteService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
 		Usuario usuario = new Usuario();
-		usuario.setNome("Wellington Nascimento");
-		usuario.setEmail("wellington@gmail.com");
-		usuario.setSenha("123");
-		usuario.setAdmin(true);
+		usuario.setId(1);
 		
-		usuarioService.incluir(usuario);
+		Solicitante solicitante = new Solicitante("Pedro", "pedro@teste.com", 32);
+		solicitante.setUsuario(usuario);
 		
-		System.out.println("Inclusão realizada!");
+		solicitanteService.incluir(solicitante);
 		
 	}
 

@@ -35,7 +35,11 @@
 		        <th>Nome</th>
 		        <th>Email</th>
 		        <th>Solicitantes</th>
-		        <th></th>
+		        <th>Pedidos</th>
+		        <th>Prontuarios</th>
+		        <c:if test="${user.admin}">
+		        	<th></th>
+		        </c:if>
 		      </tr>
 		    </thead>
 		    <tbody>
@@ -44,8 +48,18 @@
 						<td>${u.id}</td>
 						<td>${u.nome}</td>
 				        <td>${u.email}</td>
-				        <td>${p.solicitantes.size()}</td>
-				        <td><a href="/usuario/${u.id}/excluir"> Excluir</a></td>
+				        <td>${u.solicitantes.size()}</td>
+				        <td>${u.pedidos.size()}</td>
+				        <td>${u.prontuarios.size()}</td>
+				        <c:if test="${user.admin}">
+					        <td>
+						        <c:choose>
+									<c:when test="${user.id != u.id}">
+										<a href="/usuario/${u.id}/excluir"> Excluir</a>
+									</c:when>
+						        </c:choose>
+				        	</td>
+				        </c:if>	
 					</tr>		    	
 		    	</c:forEach>		     
 		    </tbody>

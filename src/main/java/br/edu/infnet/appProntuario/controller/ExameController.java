@@ -46,9 +46,16 @@ public class ExameController {
 		
 		Exame exame = exameService.obterPorId(id);
 		
-		exameService.excluir(id);
-	
-		model.addAttribute("msg", "Exame " + exame.getDescricao() +" removido com sucesso!");
+		String mensagem = null;
+		
+		try {
+			exameService.excluir(id);	
+			mensagem = "Exame " + exame.getDescricao() +" removido com sucesso!";	
+		} catch (Exception e) {
+			mensagem = "Não foi possível excluir o exame "+ exame.getDescricao();
+		}
+		
+		model.addAttribute("msg", mensagem);
 		
 	
 		return telaLista(model);

@@ -1,11 +1,16 @@
 package br.edu.infnet.appProntuario.model.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import br.edu.infnet.appProntuario.model.exceptions.HonoraiosNaoPreenchidosException;
 
@@ -21,6 +26,13 @@ public abstract class Pedido {
 	private float valor;
 	private float valorPlanoSaude;
 	private boolean planoDeSaude;
+	
+	@ManyToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+	
+	@ManyToMany(mappedBy = "pedidos")
+	private List<Prontuario> prontuarios;
 		
 	public Pedido() {
 		
@@ -67,7 +79,24 @@ public abstract class Pedido {
 	public String getDescricao() {
 		return descricao;
 	}
+	
+	
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Prontuario> getProntuarios() {
+		return prontuarios;
+	}
+
+	public void setProntuarios(List<Prontuario> prontuarios) {
+		this.prontuarios = prontuarios;
+	}
 
 	public Integer getId() {
 		return id;

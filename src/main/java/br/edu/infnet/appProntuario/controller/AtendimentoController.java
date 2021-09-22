@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.appProntuario.model.domain.Atendimento;
+import br.edu.infnet.appProntuario.model.domain.Usuario;
 import br.edu.infnet.appProntuario.model.service.AtendimentoService;
 
 @Controller
@@ -17,7 +19,7 @@ public class AtendimentoController {
 	private AtendimentoService atendimentoService;
 
 	@GetMapping(value ="/atendimento/lista")
-	public String telaLista(Model model) {
+	public String telaLista(Model model,  @SessionAttribute("user") Usuario usuario) {
 		
 		model.addAttribute("atendimentos", atendimentoService.obterLista());
 		
@@ -30,32 +32,37 @@ public class AtendimentoController {
 	}
 	
 	@PostMapping(value = "/atendimento/incluir") 
-	public String incluir(Model model, Atendimento atendimento) {
+	public String incluir(Model model, Atendimento atendimento,  @SessionAttribute("user") Usuario usuario) {
 		
 		atendimentoService.incluir(atendimento);
 		
 		model.addAttribute("msg", "Atendimento " + atendimento.getDescricao() +" cadastrado com sucesso!");
 		
-		return telaLista(model);
+		return telaLista(model, usuario);
 	}
 	
 	
 	@GetMapping(value = "/atendimento/{id}/excluir")
-	public String excluir(Model model, @PathVariable Integer id) {
+	public String excluir(Model model, @PathVariable Integer id,  @SessionAttribute("user") Usuario usuario) {
 		
-		// excluir através do id
+	
 		Atendimento atendimento = atendimentoService.obterPorId(id);
 		
-		// chama o método excluir no Service
-		atendimentoService.excluir(id);
+		String mensagem = null;
 		
-		// mensagem
-		model.addAttribute("msg", "Atendimento " + atendimento.getDescricao() +" removido com sucesso!");
+		try {
+			atendimentoService.excluir(id);		
+			mensagem = "Atendimento " + atendimento.getDescricao() +" removido com sucesso!";
+			
+		} catch (Exception e) {
+			mensagem = "Não foi possível excluir o solicitante "+ atendimento.getDescricao();
+		}
 		
-		// chama a tela de lista novamente
-		return telaLista(model);
-		
-		//return "atendimento/lista";
+	
+		model.addAttribute("msg", mensagem);
+			
+		return telaLista(model, usuario);
+	
 	}
 	
 }

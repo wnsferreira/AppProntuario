@@ -4,10 +4,10 @@
 <nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">AppProntuário</a>
+	      <a class="navbar-brand" href="/app">AppProntuário</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Home</a></li>
+	      <li class="active"><a href="/">Home</a></li>
 	      
 	      <c:if test="${not empty user}">
 	      	<li><a href="/solicitante/lista">Solicitante</a></li>
@@ -15,6 +15,7 @@
 	      	<li><a href="/atendimento/lista">Atendimento</a></li>
 	      	<li><a href="/consulta/lista">Consulta</a></li>
 	      	<li><a href="/exame/lista">Exame</a></li>
+	      	<li><a href="/prontuario/lista">Prontuário</a></li>
 	      </c:if>
 	      
 	    </ul>
