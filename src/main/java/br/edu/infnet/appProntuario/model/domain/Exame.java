@@ -11,6 +11,7 @@ public class Exame extends Pedido {
 	private LocalDateTime data;
 	private String resultado;
 	private String particular;
+	private String tipoSanguineo;
 	
 	public Exame() {
 	}
@@ -89,6 +90,14 @@ public class Exame extends Pedido {
 
 	public void setParticular(String particular) {
 		this.particular = particular;
+	}
+
+	public String getTipoSanguineo() {
+		return tipoSanguineo;
+	}
+
+	public void setTipoSanguineo(String tipoSanguineo) {
+		this.tipoSanguineo = tipoSanguineo;
 	}
 	
 	

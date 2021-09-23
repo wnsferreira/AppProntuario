@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appProntuario.model.domain.Atendimento;
 import br.edu.infnet.appProntuario.model.domain.Consulta;
+import br.edu.infnet.appProntuario.model.domain.Exame;
 import br.edu.infnet.appProntuario.model.domain.Pedido;
 import br.edu.infnet.appProntuario.model.domain.Prontuario;
 import br.edu.infnet.appProntuario.model.domain.Solicitante;
@@ -39,6 +40,9 @@ public class ProntuarioLoader implements ApplicationRunner{
 		
 		Consulta c1 = new Consulta();
 		c1.setId(2);
+		
+		Exame e1 = new Exame();
+		e1.setId(3);
 		
 		List<Pedido> pedidos = new ArrayList<Pedido>();
 		pedidos.add(a1);

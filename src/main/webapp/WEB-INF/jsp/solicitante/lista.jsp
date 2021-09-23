@@ -27,7 +27,7 @@
 					</div>	
 				</c:if>
 				
-			<h3>Quantidade de solicitantes existentes: ${lista.size()}!</h3>
+			<h3>Quantidade de solicitantes existentes: ${lista.size()}</h3>
 			
 			<hr>
 		        

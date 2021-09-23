@@ -29,7 +29,7 @@
 					</div>	
 				</c:if>
 				
-			<h3>Quantidade de atendimentos existentes: ${atendimentos.size()}!</h3>
+			<h3>Quantidade de atendimentos existentes: ${atendimentos.size()}</h3>
 			
 			<hr>
 		        

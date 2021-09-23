@@ -14,20 +14,24 @@
 
 	<c:import url="/WEB-INF/jsp/menu.jsp"></c:import>
 	
-	<h2>Cadastro de atendimentos</h2>	
-	<form action="/atendimento/incluir" method="post">
+	<div class="container">
+	
+		<h2>Cadastro de atendimentos</h2>	
+		<form action="/atendimento/incluir" method="post">
 		
-		<h3> 
-			Descrição: <input type="text" placeholder="Entre com a especialização" name="descricao">
-		</h3>
-		
-		<h3> 
-			Honorario: <input type="text"  placeholder="Entre com o valor" name="honorario">
-		</h3>
-				
-		<h3>
-			<button type="submit">Cadastrar</button>
-		</h3>
-	</form>
+			<div class="form-group">
+	      		<label>Descrição:</label> 
+				<input type="text" placeholder="Entre com a especialização" name="descricao">
+			</div>
+						
+			<div class="form-group">
+	      		<label>Honorario:</label> 
+				<input type="text"  placeholder="Entre com o valor" name="honorario">
+			</div>
+					
+				<button type="submit">Cadastrar</button>
+			
+		</form>
+	</div>
 </body>
 </html>

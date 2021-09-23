@@ -71,10 +71,5 @@
 	  </c:if>
 	  
 	</div>
-		
-		
-	<form action="/paciente" method="get">
-		<button type="submit" class="btn btn-default">Voltar</button>
-	</form>
 </body>
 </html>

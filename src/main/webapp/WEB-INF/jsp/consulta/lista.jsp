@@ -27,7 +27,7 @@
 					</div>	
 				</c:if>
 				
-			<h3>Quantidade de consultas existentes: ${consultas.size()}!</h3>
+			<h3>Quantidade de consultas existentes: ${consultas.size()}</h3>
 			
 			<hr>
 		        

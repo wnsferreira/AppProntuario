@@ -1,6 +1,7 @@
 package br.edu.infnet.appProntuario.model.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -46,29 +47,28 @@ public class Prontuario {
 		this.relatorio = relatorio;
 	}
 	
-//	@Override
-//	public String toString() {
-//		
-//		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-//		
-//		return String.format("%s;%s;%s;%s;%s",
-//				this.descricao,
-//				this.receitas,
-//				this.relatorio,
-//				this.getSolicitante(),
-//				this.dataRegistro.format(formato)
-//				);
-//		
-//	}
-//	
-//	public String obterProntuario() {
-//		return String.format("PRONTUARIO \r Solicitante %s %s \r Atendido no dia %s.\r\r",
-//				this.solicitante.getNome(),
-//				this.solicitante.getSobrenome(),
-//				this.dataRegistro.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
-//				);
-//	}
+	@Override
+	public String toString() {
+		
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		
+		return String.format("%s;%s;%s;%s;%s",
+				this.descricao,
+				this.receitas,
+				this.relatorio,
+				this.getSolicitante(),
+				this.dataRegistro.format(formato)
+				);
+		
+	}
 	
+	public String obterProntuario() {
+		return String.format("PRONTUARIO \r Solicitante %s %s \r Atendido no dia %s.\r\r",
+				this.solicitante.getNome(),
+//				this.solicitante.getSobrenome(),
+				this.dataRegistro.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))
+				);
+	}
 	
 	
 	public String getExame() {

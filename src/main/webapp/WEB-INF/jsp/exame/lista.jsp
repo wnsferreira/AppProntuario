@@ -27,7 +27,7 @@
 					</div>	
 				</c:if>
 				
-			<h3>Quantidade de exames existentes: ${exames.size()}!</h3>
+			<h3>Quantidade de exames existentes: ${exames.size()}</h3>
 			
 			<hr>
 		        
@@ -36,8 +36,9 @@
 		      <tr>
 		     	<th>Id</th>
 		     	<th>Tipo de exame</th>
-		        <th>Data</th>
-		        <th>Resultado</th>		        
+		     	<th>Descrição</th>
+<!-- 		        <th>Data</th> -->
+<!-- 		        <th>Resultado</th>		         -->
 		        <th></th>
 		      </tr>
 		    </thead>
@@ -46,8 +47,9 @@
 					<tr>
 						<td>${e.id}</td>
 						<td>${e.tipoExame}</td>
-						<td>${e.data}</td>
-				        <td>${e.resultado}</td>
+						<td>${e.descricao}</td>
+<%-- 						<td>${e.data}</td> --%>
+<%-- 				        <td>${e.resultado}</td> --%>
 				        <td><a href="/exame/${e.id}/excluir"> Excluir</a></td>				        
 					</tr>		    	
 		    	</c:forEach>		     

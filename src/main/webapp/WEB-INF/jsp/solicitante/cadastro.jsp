@@ -6,31 +6,36 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 
 	<c:import url="/WEB-INF/jsp/menu.jsp"></c:import>
 	
-	<h2>Cadastro de usuários</h2>	
-	<form action="/solicitante/incluir" method="post">
+	<div class="container">
+	
+		<h2>Cadastro de usuários</h2>	
+		<form action="/solicitante/incluir" method="post">
+			
+			<div class="form-group">
+	      		<label>Nome:</label> 
+				<input type="text" placeholder="Entre com o seu nome" name="nome">
+			</div>
+			
+			<div class="form-group">
+	      		<label>Idade:</label>
+				<input type="text"  placeholder="Entre com a sua idade" name="idade">
+			</div>
+			
+			<div class="form-group">
+	      		<label>Email:</label> 
+				<input type="email"  placeholder="Entre com o seu email" name="email">
+			</div>
+			
+				<button type="submit">Cadastrar</button>
 		
-		<h3> 
-			Nome: <input type="text" placeholder="Entre com o seu nome" name="nome">
-		</h3>
-		<h3>
-			Idade: <input type="text"  placeholder="Entre com a sua idade" name="idade">
-		</h3>
-		<h3> 
-			Email: <input type="email"  placeholder="Entre com o seu email" name="email">
-		</h3>	
-		<h3>
-			<button type="submit">Cadastrar</button>
-		</h3>
-	</form>
+		</form>
+	</div>
 </body>
 </html>

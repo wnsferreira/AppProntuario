@@ -39,4 +39,8 @@ public class ProntuarioService {
 	public Prontuario obterPorId(Integer id) {
 		return prontuarioRepository.findById(id).orElse(null);
 	}
+	
+	public Integer obterQtde() {
+		return (int) prontuarioRepository.count();
+	}
 }

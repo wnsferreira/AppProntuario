@@ -5,19 +5,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <title>Cadastro</title>
 </head>
 <body>
 
 	<c:import url="/WEB-INF/jsp/menu.jsp"></c:import>
+	
+	<div class="container">
 		
-	<c:if test="${not empty mensagem}">
-		<div class="alert alert-danger">
- 				<strong>Problema!</strong> ${mensagem}
-		</div>	
-	</c:if>
+		<c:if test="${not empty mensagem}">
+			<div class="alert alert-danger">
+	 				<strong>Problema!</strong> ${mensagem}
+			</div>	
+		</c:if>
 	
 	<h2>Cadastramento de usuários</h2>	
 	
@@ -47,9 +48,13 @@
 	  	
 	  	<c:import url="/WEB-INF/jsp/endereco.jsp"></c:import>
 	  	 
-	  		
-	  	<button type="submit" class="btn btn-default">Cadastrar</button>
+	  	<div class="form-row">	
+	  		<div class="form-group col-md-12">
+	  			<button type="submit" class="btn btn-default">Cadastrar</button>
+	  		</div>	
+	  	</div>
 	  	
 	</form>
+	</div>
 </body>
 </html>
