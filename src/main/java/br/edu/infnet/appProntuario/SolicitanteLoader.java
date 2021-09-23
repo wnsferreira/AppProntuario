@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import br.edu.infnet.appProntuario.model.domain.Solicitante;
 import br.edu.infnet.appProntuario.model.domain.Usuario;
 import br.edu.infnet.appProntuario.model.service.SolicitanteService;
-import br.edu.infnet.appProntuario.model.service.UsuarioService;
 
 
 @Component

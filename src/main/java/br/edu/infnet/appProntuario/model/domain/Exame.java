@@ -36,7 +36,7 @@ public class Exame extends Pedido {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(super.toString()); //mãe
+		sb.append(super.toString());
 		sb.append(";");
 		sb.append(this.tipoExame);
 		sb.append(";");
